@@ -4,19 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Card</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #fbe7d7;
+            overflow: hidden;
+        }
+        
+        .card {
+            text-align: center;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+            max-width: 600px;
+        }
+
+        .message {
+            display: none;
+            font-size: 1.1em;
+            margin-top: 20px;
+            color: #ff6584;
+            text-align: left;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #ff6584;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .confetti {
+            position: fixed;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background-color: #ff6584;
+            animation: fall linear infinite;
+            opacity: 0.7;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Happy Birthday, Didi!</h1>
-        <div id="balloonContainer">
-            <div class="balloon" onclick="revealMessage(event, 1)">🎈</div>
-            <div class="balloon" onclick="revealMessage(event, 2)">🎈</div>
-            <div class="balloon" onclick="revealMessage(event, 3)">🎈</div>
-        </div>
-        <div id="secretMessage" class="hidden"></div>
-    </div>
-    <script src="script.js"></script>
+
+<div class="card">
+    <h1>Happy Birthday, Sis!</h1>
+    <p>Click the button to see your special message.</p>
+    <button onclick="showMessage()">Show Message</button>
+    <p class="message">
+        To my wonderful sister,<br><br>
+
+        happy birthday didi<br><br>
+
+        On your special day, I just want to remind you how much you mean to me. You've always been there, through thick and thin. I've learned so much from you: to never give up, never lose hope, how to tackle tough situations, and that failure is just a part of life. You’ve shown me that hard work is the path to achieving your dreams and you’ve taught that hard work always pay off. You teach me that life is full of ups and downs but the most important thing is how you tackle it. Whenever I feel low or demotivated, I think of you. You are my motivation, Didi. The time I spend with you is one of the most precious parts of my life that I will never forget. I still remember the day you told me you cleared IIT Jodhpur test. I am so happy I told my friends about you. Many ups and downs are there in her life but she never give up and now she is in IIT Jodhpur and on the same day I had a dream where Dada and I were sitting, watching CID (in Sankra), and then your call came. You said, ‘Nana mor IIT me selection hoge!’ and we were very happy. I know Dada would be proud of you. The way you worked so hard to achieve your dreams, I will also work hard like you in my life. I am so lucky to have you in my life. Wishing you a day filled with love, laughter, and all the happiness you deserve. Keep shining and chasing your dream.<br><br>
+
+        Once again happy birthday to my pettiest sister
+    </p>
+</div>
+
+<script>
+    function showMessage() {
+        document.querySelector('.message').style.display = 'block';
+    }
+
+    // Generate confetti
+    for (let i = 0; i < 100; i++) {
+        let confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        confetti.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+        document.body.appendChild(confetti);
+    }
+</script>
+
 </body>
 </html>
